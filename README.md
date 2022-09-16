@@ -29,16 +29,17 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 4. [Get the ID of the billing + enrollment account you would like the subscriptions to be created in](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#find-accounts-you-have-access-to). Make note of the ```billingAccount``` and ```enrollmentAccount``` names (they will appear as ```/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/enrollmentAccounts/<enrollmentAccountName>```).
 
 #### _*Setting Up the Infrastructure*_
-1. Change the variable names in the ```infra/setup.ps1``` file to reflect the resource names you would like to deploy.
+<!-- 1. Change the variable names in the ```infra/setup.ps1``` file to reflect the resource names you would like to deploy.
 2. Run the commands in the file.
 3. Publish the PowerShell script to the Azure Function that was provisioned.
-4. Create an Logic App to invoke the Azure Function.
+4. Create an Logic App to invoke the Azure Function. -->
 
 #### _*Automated Subscription Generation*_
 
 ![Automation](/docs/images/automation.png)
-1. Invoke the Logic App, providing a subscription alias, the Billing Account Name, and Enrollment Account name to the web request. 
-    - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request. 
+1. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
+    - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request.
+    - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 
 ## Notes
 - If debugging the function locally, ensure you install the [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash). Functions can be debugged locally by changing into the project directory and running ```func start```.
@@ -48,5 +49,4 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 * [Programmatically create Azure Enterprise Agreement subscriptions with the latest APIs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-cli)
 * [Azure Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 * [Azure EA Dev/Test option](https://azure.microsoft.com/offers/ms-azr-0148p/)
-* [Alias description](https://docs.microsoft.com/en-us/rest/api/subscription/2020-09-01/alias/create?tabs=HTTP#uri-parameters)
 * [Create an Azure Function in VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)

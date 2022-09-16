@@ -3,19 +3,24 @@ using namespace System.Net
 # Input bindings are passed in via param block.
 param($Request, $TriggerMetadata)
 
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
 # Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
+$billingAccount = $Request.Body.BillingAccount
+$enrollmentAccount = $Request.Body.EnrollmentAccount
+$subscriptionAlias = $Request.Body.SubscriptionAlias
+$subscriptionName = $Request.Body.SubscriptionName
 
-$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+# Check for parameters and create subscription
+if (!$billingAccount -or !$enrollmentAccount -or !$subscriptionAlias -or !$subscriptionName) {
+    $body = "Please provide a billing account, enrollment account, subscription alias, and subscription name."
+} else {
 
-if ($name) {
-    $body = "Hello, $name. This HTTP triggered function executed successfully."
+    # This command will create 
+    # New-AzSubscriptionAlias -AliasName $subscriptionAlias -SubscriptionName $subscriptionName -BillingScope "/providers/Microsoft.Billing/BillingAccounts/$billingAccount/enrollmentAccounts/$enrollmentAccount"
+
+    $test = Get-AzContext
+
+    $body = "Success: $billingAccount $enrollmentAccount $subscriptionAlias $subscriptionName $($test[0].Name)"
+    
 }
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
