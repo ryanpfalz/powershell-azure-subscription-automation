@@ -36,6 +36,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 
 #### _*Automated Subscription Generation*_
 
+![Automation](/docs/images/automation.png)
 1. Invoke the Logic App, providing a subscription alias, the Billing Account Name, and Enrollment Account name to the web request. 
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request. 
 
