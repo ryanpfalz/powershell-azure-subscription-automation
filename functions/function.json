@@ -1,0 +1,20 @@
+{
+  "scriptFile": "./SubscriptionAutomationDemoFunction/run.ps1",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
