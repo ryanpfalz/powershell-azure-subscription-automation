@@ -41,7 +41,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request. 
 
 ## Notes
-- If debugging the function locally, ensure you install the [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash).
+- If debugging the function locally, ensure you install the [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash). Functions can be debugged locally by changing into the project directory and running ```func start```.
 
 ## Resources
 

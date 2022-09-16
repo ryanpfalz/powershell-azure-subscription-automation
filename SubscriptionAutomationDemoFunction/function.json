@@ -1,5 +1,4 @@
 {
-  "scriptFile": "./SubscriptionAutomationDemoFunction/run.ps1",
   "bindings": [
     {
       "authLevel": "function",
