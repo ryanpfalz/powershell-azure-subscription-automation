@@ -6,6 +6,13 @@ param($Request, $TriggerMetadata)
 # Global error action preference to enable exception handling if Az command fails
 $ErrorActionPreference = "Stop"
 
+# Authenticate with SP
+[SecureString]$pwd = [Environment]::GetEnvironmentVariable("APP_SEC") | ConvertTo-SecureString -AsPlainText -Force
+[PSCredential]$credentials = New-Object System.Management.Automation.PSCredential ([Environment]::GetEnvironmentVariable('APP_ID'), $pwd)
+$tenantId = [Environment]::GetEnvironmentVariable('APP_TENANT')
+
+Connect-AzAccount -ServicePrincipal -Credential $credentials -Tenant $tenantId
+
 # Import-Module "./SubscriptionAutomationDemoFunction/modules/Az.Accounts/2.7.2/Az.Accounts.psm1"
 # Import-Module "./SubscriptionAutomationDemoFunction/modules/Az.Subscription/0.8.1/Az.Subscription.psm1"
 

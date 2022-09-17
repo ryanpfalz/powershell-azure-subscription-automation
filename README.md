@@ -36,7 +36,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 ### _*Setting Up the Cloud Infrastructure*_
 #### Setup
 - Change the variable names in the ```infra/setupFunction.ps1``` file to reflect the resource names you would like to deploy and run the commands.
-- Change the variable names in the ```infra/setupKeyVault.ps1``` file to reflect the resource names you would like to deploy and run the commands. [Create a new secret in the key vault](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell#adding-a-secret-to-key-vault) and store the secret generated in Step 3 above.
+- [Set the encrypted environment variables](https://learn.microsoft.com/en-us/azure/app-service/configure-common?tabs=portal#configure-app-settings) APP_ID, APP_TENANT, and APP_SEC in the newly created function app to contain your service principal's Application ID, Tenant ID, and Secret generated in Step 3 above.
 
 #### Deploy
 - Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource deployed in Setup step and run the command.
@@ -45,8 +45,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 ### _*Automated Subscription Generation*_
 
 ![Automation](/docs/images/automation.png)
-1. TODO _Ensure any UUIDs are updated in the config to pull from KV_
-2. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
+1. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request.
     - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 
@@ -62,6 +61,6 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 * [Create a Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-cli%2Cbrowser#create-supporting-azure-resources-for-your-function)
 * [Deploy an Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
 * [Create a Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
-* [Set up a Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell)
 * [Using PowerShell Modules in Azure Functions](https://devblogs.microsoft.com/powershell/using-powershell-modules-in-azure-functions/)
 * [Azure Functions running on Dedicated Plan](https://learn.microsoft.com/en-us/azure/azure-functions/dedicated-plan#always-on)
+* [Service Principal Authentication](https://learn.microsoft.com/en-us/azure/developer/java/sdk/identity-service-principal-auth)
