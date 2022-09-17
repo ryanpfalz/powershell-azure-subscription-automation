@@ -48,11 +48,11 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request.
     - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 
-## Limitations
+## Limitations/Considerations
 * Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api).
+* To avoid issues around [cold starts](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#cold-start), and the need to [bundle](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#bundle-modules-instead-of-using-install-module) modules with the function, the example deploys a function in an 'Always On' [App Service Plan](https://learn.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionapp?view=azps-8.3.0#example-2-create-a-powershell-function-app-which-will-be-hosted-in-a-service-plan).
 
 ## Resources
-
 * [Programmatically create Azure Enterprise Agreement subscriptions with the latest APIs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-cli)
 * [Azure Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 * [Create an Azure Function in VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)
@@ -61,3 +61,5 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 * [Deploy an Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
 * [Create a Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
 * [Set up a Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell)
+* [Using PowerShell Modules in Azure Functions](https://devblogs.microsoft.com/powershell/using-powershell-modules-in-azure-functions/)
+* [Azure Functions running on Dedicated Plan](https://learn.microsoft.com/en-us/azure/azure-functions/dedicated-plan#always-on)

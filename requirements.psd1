@@ -3,6 +3,6 @@
 #
 @{
     # For latest supported version, go to 'https://www.powershellgallery.com/packages/Az'. 
-    'Az' = '8.*'
+    # 'Az' = '8.*'
     'Az.Subscription' = '0.8.1'
 }
