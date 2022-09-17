@@ -1,5 +1,3 @@
-# https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-powershell%2Cbrowser
-
 $resourceGroup = "SubscriptionAutomation"
 $location = "centralus"
 $storageAccountName = "subscriptionautomationdemostorage"

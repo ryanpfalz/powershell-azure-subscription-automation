@@ -33,10 +33,11 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 
 ### _*Setting Up the Cloud Infrastructure*_
 #### Setup
-- Change the variable names in the ```infra/setupFunction.ps1``` and ```infra/setupLogicApp.ps1``` files to reflect the resource names you would like to deploy and run the commands.
+- Change the variable names in the ```infra/setupFunction.ps1``` file to reflect the resource names you would like to deploy and run the commands.
 
 #### Deploy
-- Set the variable names in the ```infra/deployFunction.ps1``` and ```infra/deployLogicApp.ps1``` files to reflect the resource names deployed in Setup step and run the commands.
+- Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource deployed in Setup step and run the command.
+- Set the variable names and path to the Logic App workflow in ```infra/deployLogicApp.ps1``` and run the commands.
 
 ### _*Automated Subscription Generation*_
 
@@ -55,3 +56,6 @@ Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-man
 * [Azure EA Dev/Test option](https://azure.microsoft.com/offers/ms-azr-0148p/)
 * [Create an Azure Function in VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)
 * [Create an Alias](https://learn.microsoft.com/en-us/rest/api/subscription/2020-09-01/alias/create?tabs=HTTP)
+* [Create Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-cli%2Cbrowser#create-supporting-azure-resources-for-your-function)
+* [Zip Deploy Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
+* [Create Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
