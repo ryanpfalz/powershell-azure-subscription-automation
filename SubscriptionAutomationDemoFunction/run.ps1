@@ -9,17 +9,25 @@ $enrollmentAccount = $Request.Body.EnrollmentAccount
 $subscriptionAlias = $Request.Body.SubscriptionAlias
 $subscriptionName = $Request.Body.SubscriptionName
 
+# use https://learn.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azps-8.3.0, get credentials from KV
+
+$ErrorActionPreference = "Stop"
+
 # Check for parameters and create subscription
 if (!$billingAccount -or !$enrollmentAccount -or !$subscriptionAlias -or !$subscriptionName) {
     $body = "Please provide a billing account, enrollment account, subscription alias, and subscription name."
 } else {
 
-    # This command will create 
-    # New-AzSubscriptionAlias -AliasName $subscriptionAlias -SubscriptionName $subscriptionName -BillingScope "/providers/Microsoft.Billing/BillingAccounts/$billingAccount/enrollmentAccounts/$enrollmentAccount"
+    try {
+        # This command will create a subscription
+        # New-AzSubscriptionAlias -AliasName $subscriptionAlias -SubscriptionName $subscriptionName -BillingScope "/providers/Microsoft.Billing/BillingAccounts/$billingAccount/enrollmentAccounts/$enrollmentAccount"
 
-    $test = Get-AzContext
+        $test = Get-AzContext
 
-    $body = "Success: $billingAccount $enrollmentAccount $subscriptionAlias $subscriptionName $($test[0].Name)"
+        $body = "Success: $billingAccount $enrollmentAccount $subscriptionAlias $subscriptionName $($test[0].Name)"
+    } catch {
+        $body = "An error occurred: $_"
+    }
     
 }
 
