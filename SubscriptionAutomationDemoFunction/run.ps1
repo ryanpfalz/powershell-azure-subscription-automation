@@ -11,6 +11,7 @@ $subscriptionName = $Request.Body.SubscriptionName
 
 # use https://learn.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azps-8.3.0, get credentials from KV
 
+# Global error action preference to enable exception handling if Az command fails
 $ErrorActionPreference = "Stop"
 
 # Check for parameters and create subscription

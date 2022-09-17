@@ -3,15 +3,15 @@
 
 ---
 
-| Page Type | Languages     | Products |
+| Page Type | Languages     | Services |
 |-----------|-----------|------------|
-| Sample    | PowerShell    | Azure Functions <br> Azure Logic Apps |
+| Sample    | PowerShell    | Azure Functions <br> Azure Logic Apps <br> Azure Key Vault |
 
 ---
 
 # Automate the creation of Azure EA Subscriptions with PowerShell
 
-This is sample codebase demonstrates how to use PowerShell to programmatically create EA subscriptions with a service principal.
+This is sample codebase demonstrates how to use PowerShell to programmatically create Enterprise Agreement (EA) subscriptions with a service principal.
 
 ## Prerequisites
 - [Install the Az PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0)
@@ -49,7 +49,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
     - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 
 ## Limitations
-Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api).
+* Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api).
 
 ## Resources
 
