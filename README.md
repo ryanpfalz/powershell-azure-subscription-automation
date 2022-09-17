@@ -29,12 +29,14 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 
 2. As an EA Account Owner, follow instructions to [grant the service principal access to your enrollment account](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals).
 
-3. [Get the ID of the billing + enrollment account you would like the subscriptions to be created in](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#find-accounts-you-have-access-to). Make note of the ```billingAccount``` and ```enrollmentAccount``` names (they will appear as ```/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/enrollmentAccounts/<enrollmentAccountName>```).
+3. Create a [new secret in the service principal](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#option-2-create-a-new-application-secret) and note the value - it can only be seen at the time of creation, and it will be used in a later step.
+
+4. [Get the ID of the billing + enrollment account you would like the subscriptions to be created in](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#find-accounts-you-have-access-to). Make note of the ```billingAccount``` and ```enrollmentAccount``` names (they will appear as ```/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/enrollmentAccounts/<enrollmentAccountName>```).
 
 ### _*Setting Up the Cloud Infrastructure*_
 #### Setup
 - Change the variable names in the ```infra/setupFunction.ps1``` file to reflect the resource names you would like to deploy and run the commands.
-- TODO: _provision Key Vault + secrets_. Setting a secret can be done in the [Azure portal](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal) or by using [PowerShell](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell).
+- Change the variable names in the ```infra/setupKeyVault.ps1``` file to reflect the resource names you would like to deploy and run the commands. [Create a new secret in the key vault](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell#adding-a-secret-to-key-vault) and store the secret generated in Step 3 above.
 
 #### Deploy
 - Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource deployed in Setup step and run the command.
