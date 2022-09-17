@@ -7,7 +7,7 @@ $keyVaultName = "subautokv"
 New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroup -Location $location
 
 $objectId = "<YOUR-SERVICEPRINCIPAL-OBJECTID>"
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $objectId -PermissionsToSecrets get,set
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $objectId -PermissionsToSecrets get,set
 
 $secretvalue = ConvertTo-SecureString "<YOUR-SERVICEPRINCIPAL-SECRET>" -AsPlainText -Force
 $secret = Set-AzKeyVaultSecret -VaultName $keyVaultName -Name "SpSecret" -SecretValue $secretvalue
