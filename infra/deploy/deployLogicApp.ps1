@@ -1,6 +1,6 @@
 $resourceGroup = "SubscriptionAutomation"
 $location = "centralus"
-$logicAppName = "subscriptionautomationdemologic"
+$logicAppName = "subautodemologic"
 
 # Create Resource Group
 New-AzResourceGroup -Name $resourceGroup -Location $location

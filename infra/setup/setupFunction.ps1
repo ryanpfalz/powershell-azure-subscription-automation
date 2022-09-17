@@ -1,7 +1,7 @@
 $resourceGroup = "SubscriptionAutomation"
 $location = "centralus"
-$storageAccountName = "subscriptionautomationdemostorage"
-$functionAppName = "subscriptionautomationdemofunction"
+$storageAccountName = "subautodemostorage"
+$functionAppName = "subautodemofunction"
 
 # Resource group
 New-AzResourceGroup -Name $resourceGroup -Location $location
@@ -10,4 +10,4 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName -SkuName "Standard_LRS" -Location $location
 
 # Function app
-New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroup -StorageAccount $storageAccountName -Runtime "PowerShell" -FunctionsVersion 4 -Location $location
+New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroup -StorageAccount $storageAccountName -Runtime "PowerShell" -FunctionsVersion 4 -Location $location -OSType "Linux" -RuntimeVersion "7.0"

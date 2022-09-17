@@ -34,6 +34,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 ### _*Setting Up the Cloud Infrastructure*_
 #### Setup
 - Change the variable names in the ```infra/setupFunction.ps1``` file to reflect the resource names you would like to deploy and run the commands.
+- TODO: _provision Key Vault + secrets_. Setting a secret can be done in the [Azure portal](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal) or by using [PowerShell](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell).
 
 #### Deploy
 - Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource deployed in Setup step and run the command.
@@ -42,7 +43,8 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 ### _*Automated Subscription Generation*_
 
 ![Automation](/docs/images/automation.png)
-1. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
+1. TODO _Ensure any UUIDs are updated in the config to pull from KV_
+2. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request.
     - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 
@@ -53,9 +55,9 @@ Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-man
 
 * [Programmatically create Azure Enterprise Agreement subscriptions with the latest APIs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-cli)
 * [Azure Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-* [Azure EA Dev/Test option](https://azure.microsoft.com/offers/ms-azr-0148p/)
 * [Create an Azure Function in VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)
 * [Create an Alias](https://learn.microsoft.com/en-us/rest/api/subscription/2020-09-01/alias/create?tabs=HTTP)
-* [Create Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-cli%2Cbrowser#create-supporting-azure-resources-for-your-function)
-* [Zip Deploy Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
-* [Create Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
+* [Create a Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-cli%2Cbrowser#create-supporting-azure-resources-for-your-function)
+* [Deploy an Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
+* [Create a Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
+* [Set up a Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-powershell)
