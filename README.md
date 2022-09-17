@@ -5,13 +5,13 @@
 
 | Page Type | Languages     | Services |
 |-----------|-----------|------------|
-| Sample    | PowerShell    | Azure Functions <br> Azure Logic Apps <br> Azure Key Vault |
+| Sample    | PowerShell    | Azure Functions <br> Azure Logic Apps |
 
 ---
 
 # Automate the creation of Azure EA Subscriptions with PowerShell
 
-This is sample codebase demonstrates how to use PowerShell to programmatically create Enterprise Agreement (EA) subscriptions with a service principal.
+This sample codebase demonstrates how to use PowerShell to programmatically create Enterprise Agreement (EA) subscriptions with a service principal.
 
 ## Prerequisites
 - [Install the Az PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0)
@@ -39,7 +39,7 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 - [Set the encrypted environment variables](https://learn.microsoft.com/en-us/azure/app-service/configure-common?tabs=portal#configure-app-settings) APP_ID, APP_TENANT, and APP_SEC in the newly created function app to contain your service principal's Application ID, Tenant ID, and Secret generated in Step 3 above.
 
 #### Deploy
-- Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource deployed in Setup step and run the command.
+- Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource provisioned in Setup step and run the command.
 - Set the variable names and path to the Logic App workflow in ```infra/deployLogicApp.ps1``` and run the commands.
 
 ### _*Automated Subscription Generation*_
@@ -51,16 +51,16 @@ This is sample codebase demonstrates how to use PowerShell to programmatically c
 
 ## Limitations/Considerations
 * Limitations can be found [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#limitations-of-azure-enterprise-subscription-creation-api).
-* To avoid issues around [cold starts](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#cold-start), and the need to [bundle](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#bundle-modules-instead-of-using-install-module) modules with the function, the example deploys a function in an 'Always On' [App Service Plan](https://learn.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionapp?view=azps-8.3.0#example-2-create-a-powershell-function-app-which-will-be-hosted-in-a-service-plan).
+* To avoid issues around [cold starts](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#cold-start) and the need to [bundle](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-powershell?tabs=portal#bundle-modules-instead-of-using-install-module) modules with the function, the example deploys a function in an 'Always On' [App Service Plan](https://learn.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionapp?view=azps-8.3.0#example-2-create-a-powershell-function-app-which-will-be-hosted-in-a-service-plan).
 
 ## Resources
 * [Programmatically create Azure Enterprise Agreement subscriptions with the latest APIs](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-cli)
 * [Azure Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 * [Create an Azure Function in VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)
-* [Create an Alias](https://learn.microsoft.com/en-us/rest/api/subscription/2020-09-01/alias/create?tabs=HTTP)
+* [Create a subs Alias](https://learn.microsoft.com/en-us/rest/api/subscription/2020-09-01/alias/create?tabs=HTTP)
 * [Create a Function App](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-powershell?tabs=azure-cli%2Cbrowser#create-supporting-azure-resources-for-your-function)
 * [Deploy an Azure Function](https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push)
 * [Create a Logic App](https://learn.microsoft.com/en-us/azure/logic-apps/quickstart-logic-apps-azure-powershell#update-logic-apps-from-powershell)
 * [Using PowerShell Modules in Azure Functions](https://devblogs.microsoft.com/powershell/using-powershell-modules-in-azure-functions/)
 * [Azure Functions running on Dedicated Plan](https://learn.microsoft.com/en-us/azure/azure-functions/dedicated-plan#always-on)
-* [Service Principal Authentication](https://learn.microsoft.com/en-us/azure/developer/java/sdk/identity-service-principal-auth)
+* [Service Principal Authentication in PowerShell](https://learn.microsoft.com/en-us/azure/developer/java/sdk/identity-service-principal-auth)
