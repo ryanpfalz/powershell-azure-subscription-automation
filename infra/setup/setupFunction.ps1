@@ -1,8 +1,8 @@
-$resourceGroup = "SubscriptionAutomation"
+$resourceGroup = "AESubAutomation"
 $location = "centralus"
-$storageAccountName = "subautodemostorage"
-$functionAppName = "subautodemofunction"
-$appServicePlanName = "subautodemoasp"
+$storageAccountName = "aesubautodemostorage"
+$functionAppName = "aesubautodemofunction"
+$appServicePlanName = "aesubautodemoasp"
 
 # Resource group
 New-AzResourceGroup -Name $resourceGroup -Location $location
@@ -15,6 +15,6 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
 
 # Function app (dedicated ASP)
 
-New-AzAppServicePlan -ResourceGroupName $resourceGroup -Name $appServicePlanName -Location $location -Tier "Basic" -NumberofWorkers 1 -WorkerSize "Small" -Linux
+New-AzAppServicePlan -ResourceGroupName $resourceGroup -Name $appServicePlanName -Location $location -Tier "Basic" -NumberofWorkers 1 -WorkerSize "Small" #-Linux
 
-New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroup -PlanName $appServicePlanName -StorageAccount $storageAccountName -Runtime "PowerShell" -FunctionsVersion 4 -OSType "Linux" -RuntimeVersion "7.0"
+New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroup -PlanName $appServicePlanName -StorageAccount $storageAccountName -Runtime "PowerShell" -FunctionsVersion 4 -RuntimeVersion "7.0" # -OSType "Linux"

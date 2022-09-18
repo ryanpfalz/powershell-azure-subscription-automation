@@ -7,7 +7,7 @@
                   "body": "@body('SubscriptionAutomationDemoFunction')",
                   "statusCode": 200
               },
-              "kind": "http",
+              "kind": "Http",
               "runAfter": {
                   "SubscriptionAutomationDemoFunction": [
                       "Succeeded"

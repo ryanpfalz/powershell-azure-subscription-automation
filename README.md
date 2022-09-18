@@ -40,7 +40,7 @@ This sample codebase demonstrates how to use PowerShell to programmatically crea
 
 #### Deploy
 - Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource provisioned in Setup step and run the command.
-- Set the variable names and path to the Logic App workflow in ```infra/deployLogicApp.ps1``` and run the commands.
+- Deploy the Logic App workflow following the [documented deployment steps](https://learn.microsoft.com/en-us/azure/logic-apps/create-single-tenant-workflows-visual-studio-code#deploy-to-azure). You may configure the logic app to use the same app service plan that was set up in the above section. 
 
 ### _*Automated Subscription Generation*_
 
