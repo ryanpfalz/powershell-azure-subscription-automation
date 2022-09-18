@@ -13,9 +13,10 @@
 
 This sample codebase demonstrates how to use PowerShell to programmatically create Enterprise Agreement (EA) subscriptions with a service principal.
 
-## Prerequisites
+## Prerequisite Tools
 - [Install the Az PowerShell module](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0)
 - [Install the Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cwindows%2Ccsharp%2Cportal%2Cbash)
+- [Install VS Code (optional)](https://code.visualstudio.com/Download)
 
 ## Running this sample
 
@@ -34,18 +35,21 @@ This sample codebase demonstrates how to use PowerShell to programmatically crea
 4. [Get the ID of the billing + enrollment account you would like the subscriptions to be created in](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=rest#find-accounts-you-have-access-to). Make note of the ```billingAccount``` and ```enrollmentAccount``` names (they will appear as ```/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/enrollmentAccounts/<enrollmentAccountName>```).
 
 ### _*Setting Up the Cloud Infrastructure*_
-#### Setup
-- Change the variable names in the ```infra/setupFunction.ps1``` file to reflect the resource names you would like to deploy and run the commands.
+#### Function
+- Change the variable names in the 'Resource names' section of the ```infra/function/deployFunction.ps1``` file to reflect the resource names you would like to deploy, and run the commands under the 'Set up resources' section.
 - [Set the encrypted environment variables](https://learn.microsoft.com/en-us/azure/app-service/configure-common?tabs=portal#configure-app-settings) APP_ID, APP_TENANT, and APP_SEC in the newly created function app to contain your service principal's Application ID, Tenant ID, and Secret generated in Step 3 above.
+- Run the command under the 'Deploy code' section of ```infra/function/deployFunction.ps1``` to publish the logic to the function.
 
-#### Deploy
-- Set the function app name in the ```infra/deployFunction.ps1``` file to reflect the resource provisioned in Setup step and run the command.
-- Deploy the Logic App workflow following the [documented deployment steps](https://learn.microsoft.com/en-us/azure/logic-apps/create-single-tenant-workflows-visual-studio-code#deploy-to-azure). You may configure the logic app to use the same app service plan that was set up in the above section. 
+#### Logic App
+- Update the ```logicappdeploy.json``` file to reflect the resource name you'd like the Logic App to use, and update the file to use the Resource ID of the function deployed above (this string can be found in the 'Properties' tab of the Function in the Azure portal).
+<!-- - Deploy the Logic App workflow following [these documented deployment steps](https://learn.microsoft.com/en-us/azure/logic-apps/create-single-tenant-workflows-visual-studio-code#deploy-to-azure). -->
+- [Deploy the template](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code?tabs=PowerShell#deploy-the-template) using the commands in ```infra/logicapp/deployLogicApp.ps1```.
+- Get the URL of the Logic app by navigating to the resource in the Azure portal, opening the Logic app designer, and [copying the 'HTTP POST URL' in the 'When a HTTP request is recieved' step](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-http-endpoint#create-a-callable-endpoint).
 
 ### _*Automated Subscription Generation*_
 
 ![Automation](/docs/images/automation.png)
-1. Invoke the Logic App, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
+1. Make a web request to the the Logic App using the URL retrieved above, providing a Subscription Alias, Subscription Name, Billing Account Name, and Enrollment Account name to the web request.
     - Note that a subscription alias is a name for the subscription creation request; this is not the same as the subscription name. The alias does not have any other lifecycle beyond the subscription creation request.
     - Follow the instructions [here](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement?tabs=azure-powershell#create-subscriptions-under-a-specific-enrollment-account) for guidance on alias naming.  
 

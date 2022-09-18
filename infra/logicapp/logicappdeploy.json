@@ -1,0 +1,88 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_subautologicapp_name": {
+            "defaultValue": "aesubautodemologic",
+            "type": "String"
+        },
+        "sites_subautofunctionapp_externalid": {
+            "defaultValue": "/subscriptions/d478ec2b-e77b-418b-9756-3149f9963702/resourceGroups/AESubAutomation/providers/Microsoft.Web/sites/aesubautodemofunction",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_subautologicapp_name')]",
+            "location": "centralus",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "triggers": {
+                        "manual": {
+                            "type": "Request",
+                            "kind": "Http",
+                            "inputs": {
+                                "schema": {
+                                    "properties": {
+                                        "BillingAccount": {
+                                            "type": "string"
+                                        },
+                                        "EnrollmentAccount": {
+                                            "type": "string"
+                                        },
+                                        "SubscriptionAlias": {
+                                            "type": "string"
+                                        },
+                                        "SubscriptionName": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "actions": {
+                        "Response": {
+                            "runAfter": {
+                                "SubscriptionAutomationDemoFunction": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                                "body": "@body('SubscriptionAutomationDemoFunction')",
+                                "statusCode": 200
+                            }
+                        },
+                        "SubscriptionAutomationDemoFunction": {
+                            "runAfter": {},
+                            "type": "Function",
+                            "inputs": {
+                                "body": {
+                                    "BillingAccount": "@{triggerBody()?['BillingAccount']}",
+                                    "EnrollmentAccount": "@{triggerBody()?['EnrollmentAccount']}",
+                                    "SubscriptionAlias": "@{triggerBody()?['SubscriptionAlias']}",
+                                    "SubscriptionName": "@{triggerBody()?['SubscriptionName']}"
+                                },
+                                "function": {
+                                    "id": "[concat(parameters('sites_subautofunctionapp_externalid'), '/functions/SubscriptionAutomationDemoFunction')]"
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {}
+            }
+        }
+    ]
+}
